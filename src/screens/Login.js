@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet, Button } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet } from "react-native";
 import api from '../axios/axios'
 
 export default function Login(){
@@ -10,12 +10,11 @@ export default function Login(){
 
     async function handleLogin(){
         console.log(user)
-        await api.postLogin(user).then(
+        await api.postLogin(user).then( //solicitação
             (response)=>{
-                console.log(response.data.message)
-                Alert.alert(response.data.message)
+                Alert.alert('OK', response.data.message)
             },(error)=>{
-                console.log(error)
+                Alert.alert('Erro', error.response.data.error)
             }
         )
     }
