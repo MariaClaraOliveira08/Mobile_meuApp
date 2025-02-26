@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import {View, Text, TextInput, TouchableOpacity, Alert, StyleSheet} from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  StyleSheet,
+} from "react-native";
 import api from "../axios/axios";
 
 export default function Cadastro() {
@@ -14,12 +21,10 @@ export default function Cadastro() {
     async function handleCadastro() {
       await api.postCadastro(user).then(
         (response) => {
-          //console.log(response.data.message);
-          Alert.alert("Cadastro realizado com sucesso!!!", response.data.message);
+          Alert.alert("Cadastro realizado com sucesso!!", response.data.message);
         },
         (error) => {
           Alert.alert('Erro', error.response.data.error);
-          //console.log(error);
         }
       );
     }
@@ -69,7 +74,7 @@ export default function Cadastro() {
         />
   
         <TouchableOpacity onPress={handleCadastro} style={styles.button}>
-          <Text>Cadastrar</Text>
+          <Text>Cadastre-se</Text>
         </TouchableOpacity>
       </View>
     );
