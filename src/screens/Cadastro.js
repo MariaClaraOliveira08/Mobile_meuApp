@@ -45,7 +45,6 @@ export default function Cadastro() {
             <TextInput
                 style={styles.input}
                 placeholder="Senha"
-                secureTextEntry={true}
                 value={user.password}
                 onChangeText={(value) => setUser({ ...user, password: value })}
             />
