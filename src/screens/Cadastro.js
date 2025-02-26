@@ -78,7 +78,6 @@ export default function Cadastro({navigation}) {
         <TouchableOpacity onPress={handleCadastro} style={styles.button}>
           <Text>Cadastre-se</Text>
           <Button title="Voltar para Login" onPress={()=> navigation.navigate("Login")}/>
-          <Button title="Cadastro" onPress={()=> navigation.navigate("Cadastro")}/>
         </TouchableOpacity>
       </View>
     );
