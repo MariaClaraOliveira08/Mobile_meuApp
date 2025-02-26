@@ -8,6 +8,6 @@ const api = axios.create({
 });
 
 const sheets = {
-    postCadastro:(user)=>api.post("cadastro", user)
+    postCadastro:(user)=>api.post("/user", user)
 }
 export default sheets;
