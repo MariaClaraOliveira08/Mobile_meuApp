@@ -43,6 +43,7 @@ export default function Login({navigation}){
             <Text>Entrar</Text>
         </TouchableOpacity>
         <Button title="Cadastro" onPress={()=> navigation.navigate("Cadastro")}/>
+        <Button title="Home" onPress={()=> navigation.navigate("Home")}/>
         </View>
     );
 }
