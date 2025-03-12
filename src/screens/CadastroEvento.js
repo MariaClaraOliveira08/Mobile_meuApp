@@ -21,7 +21,7 @@ export default function CadastroEvento({ navigation }) {
 
   async function handleCadastroEvento() {
     try {
-      const response = await api.postCadastroEvento('/evento'); 
+      const response = await api.postCadastroEvento(evento); 
       Alert.alert("Cadastro realizado com sucesso!!", response.data.message);
       navigation.navigate("Home"); 
     } catch (error) {

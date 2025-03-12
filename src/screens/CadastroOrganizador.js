@@ -12,7 +12,7 @@ import api from "../axios/axios";
 
 export default function CadastroOrganizador({ navigation }) {
   const [organizador, setOrganizador] = useState({
-    name: "",
+    nome: "",
     email: "",
     senha: "",
     telefone: "",
@@ -20,7 +20,7 @@ export default function CadastroOrganizador({ navigation }) {
 
   async function handleCadastroOrganizador() {
     try {
-      const response = await api.postCadastroOrganizador('/organizador', organizador); 
+      const response = await api.postCadastroOrganizador(organizador); 
       Alert.alert("Cadastro realizado com sucesso!!", response.data.message);
       navigation.navigate("Home"); 
     } catch (error) {
@@ -34,9 +34,9 @@ export default function CadastroOrganizador({ navigation }) {
       <TextInput
         style={styles.input}
         placeholder="Nome do Organizador"
-        value={organizador.name}
+        value={organizador.nome}
         onChangeText={(value) => {
-          setOrganizador({ ...organizador, name: value });
+          setOrganizador({ ...organizador, nome: value });
         }}
       />
       <TextInput
@@ -49,10 +49,10 @@ export default function CadastroOrganizador({ navigation }) {
       />
       <TextInput
         style={styles.input}
-        placeholder="Data e Hora"
-        value={organizador.password}
+        placeholder="Senha"
+        value={organizador.senha}
         onChangeText={(value) => {
-            setOrganizador({ ...organizador, password: value });
+            setOrganizador({ ...organizador, senha: value });
         }}
       />
       <TextInput

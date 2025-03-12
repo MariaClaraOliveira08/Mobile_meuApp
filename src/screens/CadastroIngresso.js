@@ -14,17 +14,17 @@ export default function CadastroIngresso({ navigation }) {
   const [ingresso, setIngresso] = useState({
     preco: "",
     tipo: "",
-    fk_id_evento:""
-    
+    fk_id_evento: "",
   });
 
   async function handleCadastroIngresso() {
     try {
-      const response = await api.postCadastroIngresso('/ingresso', ingresso); 
+      console.log(ingresso);
+      const response = await api.postCadastroIngresso(ingresso);
       Alert.alert("Cadastro realizado com sucesso!!", response.data.message);
-      navigation.navigate("Home"); 
+      navigation.navigate("Home");
     } catch (error) {
-      Alert.alert('Erro', error.response.data.error);
+      Alert.alert("Erro", error.response.data.error);
     }
   }
 
@@ -34,7 +34,7 @@ export default function CadastroIngresso({ navigation }) {
       <TextInput
         style={styles.input}
         placeholder="Preço"
-        value={ingresso.name}
+        value={ingresso.preco}
         onChangeText={(value) => {
           setIngresso({ ...ingresso, preco: value });
         }}
@@ -47,7 +47,7 @@ export default function CadastroIngresso({ navigation }) {
           setIngresso({ ...ingresso, tipo: value });
         }}
       />
-    
+
       <TextInput
         style={styles.input}
         placeholder="fk_id_evento"
@@ -57,11 +57,14 @@ export default function CadastroIngresso({ navigation }) {
           setIngresso({ ...ingresso, fk_id_evento: value });
         }}
       />
-      
+
       <TouchableOpacity onPress={handleCadastroIngresso} style={styles.button}>
         <Text style={styles.buttonText}>Cadastrar Ingresso</Text>
       </TouchableOpacity>
-      <Button title="Voltar para Home" onPress={() => navigation.navigate("Home")} />
+      <Button
+        title="Voltar para Home"
+        onPress={() => navigation.navigate("Home")}
+      />
     </View>
   );
 }
@@ -72,30 +75,30 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
-    backgroundColor:'#9b49ea'
+    backgroundColor: "#9b49ea",
   },
   title: {
-    color: '#e9e4ee',
+    color: "#e9e4ee",
     fontSize: 28,
     fontWeight: "bold",
     marginBottom: 20,
   },
   input: {
-    width: '100%',
+    width: "100%",
     height: 40,
     borderBottomWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
   },
   button: {
-    backgroundColor: 'pink',
+    backgroundColor: "pink",
     padding: 10,
     borderRadius: 5,
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 10,
   },
   buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
   },
 });
