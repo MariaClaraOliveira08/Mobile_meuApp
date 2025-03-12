@@ -36,7 +36,7 @@ export default function CadastroOrganizador({ navigation }) {
         placeholder="Nome do Organizador"
         value={organizador.name}
         onChangeText={(value) => {
-          setEvento({ ...organizador, name: value });
+          setOrganizador({ ...organizador, name: value });
         }}
       />
       <TextInput
@@ -44,7 +44,7 @@ export default function CadastroOrganizador({ navigation }) {
         placeholder="Email"
         value={organizador.email}
         onChangeText={(value) => {
-          setEvento({ ...organizador, email: value });
+            setOrganizador({ ...organizador, email: value });
         }}
       />
       <TextInput
@@ -52,7 +52,7 @@ export default function CadastroOrganizador({ navigation }) {
         placeholder="Data e Hora"
         value={organizador.password}
         onChangeText={(value) => {
-          setEvento({ ...organizador, password: value });
+            setOrganizador({ ...organizador, password: value });
         }}
       />
       <TextInput
@@ -60,7 +60,7 @@ export default function CadastroOrganizador({ navigation }) {
         placeholder="Telefone"
         value={organizador.telefone}
         onChangeText={(value) => {
-          setEvento({ ...organizador, telefone: value });
+            setOrganizador({ ...organizador, telefone: value });
         }}
       />
       

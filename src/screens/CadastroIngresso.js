@@ -33,18 +33,18 @@ export default function CadastroIngresso({ navigation }) {
       <Text style={styles.title}>Cadastro de Ingresso</Text>
       <TextInput
         style={styles.input}
-        placeholder="Tipo"
+        placeholder="Preço"
         value={ingresso.name}
         onChangeText={(value) => {
-          setEvento({ ...ingresso, preco: value });
+          setIngresso({ ...ingresso, preco: value });
         }}
       />
       <TextInput
         style={styles.input}
-        placeholder="Descrição"
-        value={ingresso.descricao}
+        placeholder="Tipo"
+        value={ingresso.tipo}
         onChangeText={(value) => {
-          setEvento({ ...ingresso, tipo: value });
+          setIngresso({ ...ingresso, tipo: value });
         }}
       />
     
@@ -54,7 +54,7 @@ export default function CadastroIngresso({ navigation }) {
         keyboardType="numeric"
         value={ingresso.fk_id_evento}
         onChangeText={(value) => {
-          setEvento({ ...ingresso, fk_id_evento: value });
+          setIngresso({ ...ingresso, fk_id_evento: value });
         }}
       />
       
