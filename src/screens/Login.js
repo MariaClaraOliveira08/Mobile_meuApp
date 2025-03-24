@@ -2,9 +2,11 @@ import React, {useState} from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet, Button } from "react-native";
 import api from '../axios/axios'
 import {Ionicons} from '@expo/vector-icons';
+import {useNavigation} from "@react-navigation/native";
 
-export default function Login({navigation}){
-    const [user, setUser] = useState ({ 
+export default function Login(){
+    const navigation = useNavigation();
+    const [user, setUser] = useState({ 
         email: "",
         password: "",
         showPassword: false,
@@ -25,6 +27,7 @@ export default function Login({navigation}){
     return(
         <View style={styles.container}>
         <Text style={styles.title}> Faça Login</Text>
+        <View style={styles.emailContainer}>
         <TextInput 
         style={styles.input}
         placeholder="EMAIL"
@@ -33,6 +36,8 @@ export default function Login({navigation}){
             setUser({...user, email: value});
         }}
         />
+        </View>
+
         <View style={styles.passwordContainer}>
         <TextInput
         style={styles.passwordInput}
@@ -43,7 +48,7 @@ export default function Login({navigation}){
             setUser({...user, password: value});
         }}
         />
-        <TouchableOpacity onPress={()=> setUser({...user, showPassword: !user.showPassword})}> {/*altera o estado a cada clique*/}
+        <TouchableOpacity onPress={()=> setUser({...user, showPassword: !user.showPassword})}> 
             <Ionicons name={user.showPassword?"eye-off":"eye"} size={24} color="gray"/>
         </TouchableOpacity>
         </View>
@@ -77,6 +82,13 @@ export default function Login({navigation}){
         backgroundColor: 'pink',
         padding:10,
         borderRadius:5
+    },
+    emailContainer:{
+        flexDirection: "row", //linha
+        alignItems: "center",
+        width: "100%",
+        borderBottomWidth: 1,
+        paddingRight: 10, //afasta o ícone da borda
     },
     passwordContainer:{
         flexDirection: "row", //linha
