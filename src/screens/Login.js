@@ -9,7 +9,7 @@ export default function Login(){
     const [user, setUser] = useState({ 
         email: "",
         password: "",
-        showPassword: false,
+        showPassword: true,
     });
 
     async function handleLogin(){
