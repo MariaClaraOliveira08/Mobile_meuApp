@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet, Button } fr
 import api from '../axios/axios'; // Certifique-se que o axios está configurado corretamente
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
+import * as SecureStore from 'expo-secure-store'
 
 export default function Login() {
   const navigation = useNavigation();
@@ -12,14 +13,19 @@ export default function Login() {
     showPassword: true,
   });
 
+  async function saveToken(token) {
+    await SecureStore.setItemAsync("token", token);
+    console.log(token);
+  }
+
   async function handleLogin() {
     try {
       const response = await api.postLogin(user);  // Chama a função de login da API
-      console.log('Resposta da API:', response);  // Verifique a resposta da API
       Alert.alert('OK', response.data.message);  // Exibe mensagem de sucesso
+      saveToken(response.data.token);
       navigation.navigate('EventosScreen');
     } catch (error) {
-      console.log('Erro na API:', error.response.data);  // Verifique o erro na resposta
+      console.log('Erro na API:', error.response.data);  
       Alert.alert('Erro', error.response.data.error)
     }
   }

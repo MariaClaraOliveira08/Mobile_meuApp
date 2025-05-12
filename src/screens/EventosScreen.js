@@ -57,7 +57,7 @@ export default function EventosScreen() {
   async function getEventos() {
     try {
       const response = await api.getEventos();
-      console.log(response.data);
+      //console.log(response.data);
       setEventos(response.data.events);
       setLoading(false);
     } catch (error) {
@@ -93,7 +93,7 @@ export default function EventosScreen() {
             >
               <Text style={styles.eventName}>{item.nome}</Text>
               <Text>{item.local}</Text>
-              <Text>{new Date(item.data_hora).toLocaleString}</Text>
+              <Text>{new Date(item.data_hora).toLocaleString()}</Text>
             </TouchableOpacity>
           )}
         />
