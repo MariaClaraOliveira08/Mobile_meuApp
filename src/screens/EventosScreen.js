@@ -11,6 +11,8 @@ import {
   TextInput,
   Alert,
 } from "react-native";
+import * as SecureStore from "expo-secure-store";
+import { useNavigation } from "@react-navigation/native";
 
 export default function EventosScreen() {
   const [eventos, setEventos] = useState([]);
@@ -27,10 +29,6 @@ export default function EventosScreen() {
   });
 
   async function criarIngresso() {
-    setNovoIngresso({
-      ...novoIngresso,
-      fk_id_evento: eventoSelecionado.id_evento,
-    });
     try {
       const response = await api.createIngresso(novoIngresso);
       Alert.alert(response.data.message);
@@ -68,6 +66,10 @@ export default function EventosScreen() {
   async function abrirModalComIngresso(evento) {
     setEventoSelecionado(evento);
     setModalVisible(true);
+    setNovoIngresso({
+      ...novoIngresso,
+      fk_id_evento: evento.id_evento,
+    });
 
     try {
       const response = await api.getIngressosPorEvento(evento.id_evento);
@@ -77,8 +79,14 @@ export default function EventosScreen() {
     }
   }
 
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={()=> {
+        navigation.navigate("CadastroEvento");
+      }}>
+        <Text>Criar novo evento</Text>
+      </TouchableOpacity>
       <Text style={styles.title}>Eventos Disponíveis</Text>
       {loading ? (
         <ActivityIndicator size="large" color="purple" />
@@ -135,8 +143,6 @@ export default function EventosScreen() {
             </Text>
           </TouchableOpacity>
 
-
-
           {mostrarForm && (
             <View style={{ marginTop: 20 }}>
               <Text>Tipo do ingresso:</Text>
@@ -185,17 +191,17 @@ const styles = StyleSheet.create({
   },
   eventCard: {
     padding: 15,
-    backgroundColor: "#c4006f",
+    backgroundColor: "#c179b0",
     marginBottom: 10,
     borderRadius: 8,
   },
   input: {
-  borderWidth: 1,
-  borderColor: "#c4006f",
-  borderRadius: 6,
-  padding: 10,
-  marginBottom: 10,
-},
+    borderWidth: 1,
+    borderColor: "#e0a6d8",
+    borderRadius: 6,
+    padding: 10,
+    marginBottom: 10,
+  },
   eventName: {
     fontSize: 18,
     fontWeight: "bold",
@@ -204,13 +210,12 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     paddingTop: 50,
-    backgroundColor: "#bab8b7"
+    backgroundColor: "#bab8b7",
   },
   modalTitle: {
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 15,
-    
   },
   ingressoItem: {
     padding: 10,
@@ -226,10 +231,10 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   input: {
-  borderWidth: 1,
-  borderColor: "#5b214c",
-  borderRadius: 6,
-  padding: 10,
-  marginBottom: 10,
-}
+    borderWidth: 1,
+    borderColor: "#5b214c",
+    borderRadius: 6,
+    padding: 10,
+    marginBottom: 10,
+  },
 });

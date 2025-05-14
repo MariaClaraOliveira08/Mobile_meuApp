@@ -36,11 +36,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor:'#9b49ea'
+    backgroundColor:'#f5eaf4'
     
   },
   title: {
-    color: '#e9e4ee',
+    color: '#5f4a58',
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 20,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    backgroundColor:'#c992f9', // Cor de fundo do botão
+    backgroundColor:'#e0a6d8', // Cor de fundo do botão
     padding: 15,
     borderRadius: 5,
     marginVertical: 10,
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    color: '#e9e4ee', // Cor do texto do botão
+    color: '#f5eaf4', // Cor do texto do botão
     fontSize: 16,
     fontWeight: 'bold',
   },
